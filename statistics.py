@@ -30,3 +30,4 @@ threshold = 3
 filtered_bigrams = [bigram for bigram in md_bigrams if (len(bigram[0]) > threshold and len(bigram[1]) > threshold)]
 filtered_dist = FreqDist(filtered_bigrams)
 filtered_dist.plot(15)
+

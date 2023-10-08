@@ -2,7 +2,7 @@ import nltk
 
 f = open('../requerimiento-0069-2023-igp-gg-otidg.txt')
 text = f.read()
-words = nltk.word_tokenize(text,'spanish')
+words = nltk.word_tokenize(text, 'spanish')
 # words = [word for word in words if len(word) > 1]
 
 # Frequency
@@ -27,7 +27,15 @@ print(bigrams_list)
 threshold = 3
 filtered_bigrams = [bigram for bigram in bigrams_list if len(bigram[0]) > threshold and len(bigram[1]) > threshold]
 filtered_dist = nltk.probability.FreqDist(filtered_bigrams)
-print('-'*25)
+print('-' * 25)
 print('filtered bigram list')
 print(filtered_bigrams[:10])
 # filtered_dist.plot(15)
+
+# COLLOCATIONS
+# ver documentación https://www.nltk.org/_modules/nltk/metrics/association.html
+bigram_measures = nltk.collocations.BigramAssocMeasures()
+finder = nltk.collocations.BigramCollocationFinder.from_words(words)
+
+finder.apply_freq_filter(3)
+print(finder.nbest(bigram_measures.pmi, 10))
