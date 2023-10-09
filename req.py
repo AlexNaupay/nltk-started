@@ -1,7 +1,14 @@
 import nltk
+import re
 
 f = open('../requerimiento-0069-2023-igp-gg-otidg.txt')
 text = f.read()
+# print(text)
+
+text = re.sub(r'<.*?>', ' ', text)  # clean text: html tags
+text = re.sub(r'\s+', ' ', text)  # text: more spaces
+print(text)
+
 words = nltk.word_tokenize(text, 'spanish')
 # words = [word for word in words if len(word) > 1]
 

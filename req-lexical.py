@@ -41,3 +41,8 @@ print(entries)
 translator = dict(entries)  # As python dict
 print(translator)
 print(translator['swim'])
+
+# Collocations: n-gramas con frecuencia alta
+print('>>> Collocations')
+text0 = nltk.Text(words)
+print(text0.collocations())
